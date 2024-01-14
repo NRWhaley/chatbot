@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import './MainWindow.css';
 
 const MainWindow = () => {
@@ -9,19 +9,20 @@ const MainWindow = () => {
         if (!inputMessage.trim()) return;
         
         setInputMessage(inputMessage);
+
         setChatHistory([...chatHistory, { sender: 'User', message: inputMessage }]);
 
-        const botResponse = `Bot: Echoing '${inputMessage}'`;
-        setChatHistory([...chatHistory, { sender: 'Bot', message: botResponse }]);
-
+        const botResponse = `Echoing '${inputMessage}'`;
+        setChatHistory([...chatHistory, { sender: 'Bot', message: botResponse } ]);
+        console.log(chatHistory)
         setInputMessage('');
     };
 
-    const handleInputChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+    function handleInputChange(event: any) {
         setInputMessage(event.target.value);
-    };
+    }
 
-    const handleKeyPress = (event: { key: string; }) => {
+    const handleKeyPress = (event: any) => {
         if (event.key === 'Enter') {
             sendMessage();
         }
@@ -32,7 +33,7 @@ const MainWindow = () => {
             <div className="chat-history">
                 {chatHistory.map((chat, index) => (
                     <div key={index} className={`message ${chat.sender}`}>
-                        {chat.message}
+                       `'{chat.sender}': '{chat.message}'`
                     </div>    
                 ))}
             </div>
