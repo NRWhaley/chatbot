@@ -16,11 +16,11 @@ const MainWindow = () => {
         setInputMessage('');
     };
 
-    const handleInputChange = (event) => {
+    const handleInputChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setInputMessage(event.target.value);
     };
 
-    const handleKeyPress = (event) => {
+    const handleKeyPress = (event: { key: string; }) => {
         if (event.key === 'Enter') {
             sendMessage();
         }
