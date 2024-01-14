@@ -1,0 +1,42 @@
+.chatbot {
+    width: 300px;
+    margin: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.chat-history {
+    height: 200px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.message {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.message.User {
+    text-align: right;
+    background-color: #d1e7dd;
+}
+
+.message.Bot {
+    text-align: left;
+    background-color: #f8d7da;
+}
+
+.message-input {
+    display: flex;
+}
+
+.message-input input {
+    flex-grow: 1;
+    padding: 5px;
+}
+
+.message-input button {
+    padding: 5px;
+}
