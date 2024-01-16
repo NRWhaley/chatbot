@@ -9,12 +9,12 @@ const MainWindow = () => {
         if (!inputMessage.trim()) return;
         
         setInputMessage(inputMessage);
+        const userMessage = { sender: 'User', message: inputMessage}
+        setChatHistory([...chatHistory, { sender: userMessage.sender, message: userMessage.message}]);
 
-        setChatHistory([...chatHistory, { sender: 'User', message: inputMessage }]);
-
-        const botResponse = `Echoing '${inputMessage}'`;
-        setChatHistory([...chatHistory, { sender: 'Bot', message: botResponse } ]);
-        console.log(chatHistory)
+        const botResponse = { sender: 'Bot' , message: `Echoing '${inputMessage}'`};
+        setChatHistory([...chatHistory, { sender: botResponse.sender, message: botResponse.message }]);
+        console.log(chatHistory[0].hasOwnProperty('sender'))
         setInputMessage('');
     };
 
@@ -33,7 +33,7 @@ const MainWindow = () => {
             <div className="chat-history">
                 {chatHistory.map((chat, index) => (
                     <div key={index} className={`message ${chat.sender}`}>
-                       `'{chat.sender}': '{chat.message}'`
+                       {chat.sender}:{chat.message} 
                     </div>    
                 ))}
             </div>
