@@ -7,20 +7,19 @@ const MainWindow = () => {
 
     const sendMessage = () => {
         if (!inputMessage.trim()) return;
-        
-        setInputMessage(inputMessage);
-        const userMessage = { sender: 'User', message: inputMessage}
-        setChatHistory([...chatHistory, { sender: userMessage.sender, message: userMessage.message}]);
 
+        const userMessage = { sender: 'User', message: inputMessage}
+        // setChatHistory([...chatHistory, userMessage]);
         const botResponse = { sender: 'Bot' , message: `Echoing '${inputMessage}'`};
-        setChatHistory([...chatHistory, { sender: botResponse.sender, message: botResponse.message }]);
-        console.log(chatHistory[0].hasOwnProperty('sender'))
+        setChatHistory([...chatHistory, userMessage, botResponse]);
+        console.log(chatHistory[0])
         setInputMessage('');
     };
 
-    function handleInputChange(event: any) {
+      function handleInputChange(event: any) {
         setInputMessage(event.target.value);
     }
+
 
     const handleKeyPress = (event: any) => {
         if (event.key === 'Enter') {
@@ -33,7 +32,7 @@ const MainWindow = () => {
             <div className="chat-history">
                 {chatHistory.map((chat, index) => (
                     <div key={index} className={`message ${chat.sender}`}>
-                       {chat.sender}:{chat.message} 
+                       {chat.sender}: {chat.message} 
                     </div>    
                 ))}
             </div>
